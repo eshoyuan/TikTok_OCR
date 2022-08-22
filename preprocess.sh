@@ -1,0 +1,5 @@
+python3 crop.py
+python3 create_classification_dataset.py
+python3 classification_vgg.py
+python3 create_PSOL_dataset.py
+python3 PSOL/generate_box_imagenet_crop.py
