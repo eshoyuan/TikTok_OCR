@@ -86,11 +86,11 @@ Train:
     - RecConAug:
         prob: 0.5
         ext_data_num: 2
-        image_shape: [48, 320, 3]
+        image_shape: [48, 480, 3]
     - RecAug:
     - MultiLabelEncode:
     - RecResizeImg:
-        image_shape: [3, 48, 320]
+        image_shape: [3, 48, 480]
     - KeepKeys:
         keep_keys:
         - image
@@ -115,7 +115,7 @@ Eval:
         channel_first: false
     - MultiLabelEncode:
     - RecResizeImg:
-        image_shape: [3, 48, 320]
+        image_shape: [3, 48, 480]
     - KeepKeys:
         keep_keys:
         - image
