@@ -3,7 +3,6 @@ import sys
 import cv2
 import json
 import numpy as np
-from paddle import dtype
 import torch
 import torchvision.transforms as transforms
 from torch.backends import cudnn
@@ -24,7 +23,7 @@ from loader.ddt_imagenet_dataset import DDTImageNetDataset
 parser = argparse.ArgumentParser(description='Parameters for DDT generate box')
 parser.add_argument('--input_size',default=448,dest='input_size')
 parser.add_argument('--data',default="data/PSOL_imgs",help='path to imagenet dataset')
-parser.add_argument('--gpu',help='which gpu to use',default='0,1,2,3',dest='gpu')
+parser.add_argument('--gpu',help='which gpu to use',default='0',dest='gpu')
 parser.add_argument('--output_path',default='data/PSOL_pseudo_box',dest='output_path')
 parser.add_argument('--batch_size',default=64,dest='batch_size')
 args = parser.parse_args()

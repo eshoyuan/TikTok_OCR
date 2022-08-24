@@ -3,7 +3,6 @@ import sys
 import cv2
 import json
 import numpy as np
-from paddle import dtype
 import torch
 import torchvision.transforms as transforms
 from torch.backends import cudnn
@@ -32,7 +31,7 @@ os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu
 os.environ['OMP_NUM_THREADS'] = "10"
 os.environ['MKL_NUM_THREADS'] = "10"
 cudnn.benchmark = True
-model_ft = models.vgg16(pretrained=True)
+model_ft = models.vgg11_bn(pretrained=False)
 model_ft.classifier=nn.Sequential(
         nn.Linear(512 * 7 * 7, 4096),
         nn.ReLU(True),
