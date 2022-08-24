@@ -20,7 +20,7 @@ def func2():
         shutil.copyfile("data/train_crop_low/"+i,"data/PSOL_imgs/train2/"+i)
     print("Done2")
 def func3():
-    for i in os.listdir("data/test_crop"):
+    for i in tqdm(os.listdir("data/test_crop")):
         if os.path.exists("data/PSOL_imgs/test")==False:
             os.mkdir("data/PSOL_imgs/test")
         shutil.copyfile("data/test_crop/"+i,"data/PSOL_imgs/test/"+i)
