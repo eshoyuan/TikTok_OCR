@@ -22,7 +22,7 @@ from .text_image_aug import tia_perspective, tia_stretch, tia_distort
 
 
 class RecAug(object):
-    def __init__(self, use_tia=True, aug_prob=0.4, **kwargs):
+    def __init__(self, use_tia=False, aug_prob=0.4, **kwargs):
         self.use_tia = use_tia
         self.aug_prob = aug_prob
 
@@ -391,7 +391,7 @@ def blur(img):
     """
     h, w, _ = img.shape
     if h > 10 and w > 10:
-        return cv2.GaussianBlur(img, (5, 5), 1)
+        return cv2.GaussianBlur(img, (3, 3), 0.8)
     else:
         return img
 
@@ -430,7 +430,7 @@ def get_crop(image):
     """
     h, w, _ = image.shape
     top_min = 1
-    top_max = 8
+    top_max = 4
     top_crop = int(random.randint(top_min, top_max))
     top_crop = min(top_crop, h - 1)
     crop_img = image.copy()
@@ -479,7 +479,7 @@ class Config:
 
         self.crop = True
         self.affine = False
-        self.reverse = True
+        self.reverse = False
         self.noise = True
         self.jitter = True
         self.blur = True
