@@ -391,7 +391,10 @@ def blur(img):
     """
     h, w, _ = img.shape
     if h > 10 and w > 10:
-        return cv2.GaussianBlur(img, (3, 3), 0.8)
+        if random.random() <=0.5:
+            return cv2.GaussianBlur(img, (3, 3), 0)
+        else:
+            return cv2.blur(img, (2,2))
     else:
         return img
 
