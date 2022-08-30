@@ -141,11 +141,7 @@ class RecResizeImg(object):
 
     def __call__(self, data):
         img = data['image']
-        if self.infer_mode and self.character_dict_path is not None:
-            norm_img, valid_ratio = resize_norm_img_chinese(img,
-                                                            self.image_shape)
-        else:
-            norm_img, valid_ratio = resize_norm_img(img, self.image_shape,
+        norm_img, valid_ratio = resize_norm_img(img, self.image_shape,
                                                     self.padding)
         data['image'] = norm_img
         data['valid_ratio'] = valid_ratio
