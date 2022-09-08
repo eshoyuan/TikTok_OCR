@@ -90,6 +90,8 @@ Text-Image-Augmentation: 主要是下述三种变化, 是针对文本识别的�
 
 Pseudo Label: 将测试集置信度大于一定阈值的标签作为伪标签, 重新训练模型.
 
+SVTR-Large: 以前的话还会担心大模型过拟合, 但是两个月看到https://www.zhihu.com/question/356398589, 似乎大模型一般可以泛化的更好, 结果也是如此.
+
 removing STN: STN本身不应该对于性能有影响, 这里移去STN主要是发现默认尺寸不适合, 且考虑到该任务文本比较规则, 所以移去.
 
 由于最后几天服务器宕机了, 没有来得及将Pseudo Label和SVTR-Large (removing STN) 结合, 模型集成也只有0.646一个SVTR-Large (removing STN) 模型, 其他都是原来0.625左右的SVTR-Large模型, 最后投票结果即为最终成绩0.66465.
@@ -100,7 +102,7 @@ removing STN: STN本身不应该对于性能有影响, 这里移去STN主要是�
 2. SOTA的弱监督目标定位. DDT是比较老的算法了, 本来是打算用PSOL的, DDT是PSOL算法的第一步, 但是发现效果不错, 就没有继续用别的了. 这里提升未知, 不一定有效果.
 3. Domain adaptation. 这个作用可能不是很大, 因为数据增强中的模糊也可以类似的效果, 整体看这题的domain  shift并不严重, 最后在验证集上的准确率0.75和测试集0.646差距不大.
 4. 调参. 这个影响应该比较大, SVTR模型可调的参数比较多的而且实验下来影响较大, 没有机会细调.
-5. RotNet自监督预训练. 这个根据CVPR2021论文[What if we only use real datasets for scene text recognition? toward scene text recognition with fewer labels](http://openaccess.thecvf.com/content/CVPR2021/html/Baek_What_if_We_Only_Use_Real_Datasets_for_Scene_Text_CVPR_2021_paper.html)甚至好于MoCo.
+5. RotNet自监督预训练. 这个根据论文[What if we only use real datasets for scene text recognition? toward scene text recognition with fewer labels](http://openaccess.thecvf.com/content/CVPR2021/html/Baek_What_if_We_Only_Use_Real_Datasets_for_Scene_Text_CVPR_2021_paper.html)甚至好于MoCo.
 
 
 
