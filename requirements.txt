@@ -16,3 +16,4 @@ lxml
 premailer
 openpyxl
 attrdict
+pyyaml
