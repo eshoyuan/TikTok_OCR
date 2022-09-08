@@ -22,7 +22,7 @@ from .text_image_aug import tia_perspective, tia_stretch, tia_distort
 
 
 class RecAug(object):
-    def __init__(self, use_tia=False, aug_prob=0.4, **kwargs):
+    def __init__(self, use_tia=True, aug_prob=0.4, **kwargs):
         self.use_tia = use_tia
         self.aug_prob = aug_prob
 
