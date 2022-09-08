@@ -1,3 +1,4 @@
+# Tiktok OCR
 ## Usage
 
 1. Install PaddlePaddle. 
@@ -33,4 +34,6 @@
 
    `sh run.sh ` 
 
-   
+## Details
+
+More details can be found in our [report (Chinese)](./report_cn.md).
