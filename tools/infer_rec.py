@@ -15,6 +15,7 @@
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
+from cgi import print_arguments
 
 import numpy as np
 
@@ -48,6 +49,7 @@ def main():
     # build model
     if hasattr(post_process_class, 'character'):
         char_num = len(getattr(post_process_class, 'character'))
+
         if config['Architecture']["algorithm"] in ["Distillation",
                                                    ]:  # distillation model
             for key in config['Architecture']["Models"]:
@@ -103,15 +105,16 @@ def main():
     ops = create_operators(transforms, global_config)
 
     save_res_path = config['Global'].get('save_res_path',
-                                         "./output/rec/predicts_rec.txt")
+                                         "./usr/yyx/data/predicts_rec.txt")
     if not os.path.exists(os.path.dirname(save_res_path)):
         os.makedirs(os.path.dirname(save_res_path))
 
     model.eval()
 
-    with open(save_res_path, "w") as fout:
-        for file in get_image_file_list(config['Global']['infer_img']):
-            logger.info("infer_img: {}".format(file))
+    with open(save_res_path, "w",encoding = "utf-8") as fout:
+        from tqdm import tqdm
+        for file in tqdm(get_image_file_list(config['Global']['infer_img'])):
+            # logger.info("infer_img: {}".format(file))
             with open(file, 'rb') as f:
                 img = f.read()
                 data = {'image': img}
@@ -141,6 +144,10 @@ def main():
             else:
                 preds = model(images)
             post_result = post_process_class(preds)
+            # print("#"*20)
+            # print(preds)
+            # print(post_result)
+            # print("#"*20)
             info = None
             if isinstance(post_result, dict):
                 rec_info = dict()
@@ -153,11 +160,12 @@ def main():
                 info = json.dumps(rec_info, ensure_ascii=False)
             else:
                 if len(post_result[0]) >= 2:
-                    info = post_result[0][0] + "\t" + str(post_result[0][1])
+                    info = post_result[0][0]
 
             if info is not None:
-                logger.info("\t result: {}".format(info))
-                fout.write(file + "\t" + info + "\n")
+                # logger.info("\t result: {}".format(info))
+                # print(info)
+                fout.write(file + "," + info + "\n")
     logger.info("success!")
 
 
