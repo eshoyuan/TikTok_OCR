@@ -1,4 +1,7 @@
-# Tiktok OCR
+# TikTok OCR
+
+This is SEU_309's Solution for [Low-resolution TikTok ID Recognition Competition held by ByteDance](https://security.bytedance.com/fe/2022/ai-challenge#/challenge).
+
 ## Usage
 
 1. Install PaddlePaddle. 
