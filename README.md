@@ -39,4 +39,4 @@ This is SEU_309's Solution for [Low-resolution TikTok ID Recognition Competition
 
 ## Details
 
-More details can be found in our [report (Chinese)](./report_cn.md).
+More details can be found in our report [(English)](./report.md)/[(Chinese)](./report_cn.md).
